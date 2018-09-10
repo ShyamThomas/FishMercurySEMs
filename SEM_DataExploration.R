@@ -3,7 +3,7 @@ library(PerformanceAnalytics)
 
 setwd("D:/Database")
 
-ALL.MERGED.data=read.csv("HG_WATERCHEM_LAKECHAR_LULC_CLIM.csv")
+ALL.MERGED.data=read.csv("HG_WATERCHEM_LAKECHAR_LULC_CLIM.csv") ## This database is the final version of data merging 
 head(ALL.MERGED.data)
 colnames(ALL.MERGED.data)
 
@@ -13,7 +13,7 @@ WAT_LID=as.character(ALL.MERGED.data$WATERBODY_LID)
 LAT=ALL.MERGED.data$lat
 LON=ALL.MERGED.data$lon
 
-
+###Transforming data to get as close as possible to a normal distribution
 logTEMP=log(ALL.MERGED.data$avgtmp)
 logRAIN=log(ALL.MERGED.data$avgrain)
 hist(ALL.MERGED.data$GDD8110)
@@ -59,6 +59,8 @@ logALLSEMDATA$SPECIES=ALL.MERGED.data$SPECIES_NAME
 
 chart.Correlation(logALLSEMDATA[,c(3:18)], pch=21)
 write.csv(logALLSEMDATA,"logALLSEMDATA.csv")
+                                   
+                                   
 
 
 
